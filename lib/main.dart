@@ -1,7 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:front/pages/login.dart';
+import 'package:front/controllers/auth_controller.dart';
+import 'package:front/general_providers.dart';
+import 'package:front/pages/login/login_page.dart';
+import 'package:front/presenters/buttons/expanded_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -9,14 +12,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    ProviderScope(
-      child: MyApp(),
-    ),
+    ProviderScope(child: MyApp()),
   );
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,29 +32,32 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final titleStateProvider = StateProvider((ref) => 'トップ');
-final loginStateProvider = StateProvider((ref) => false);
-
 class MyHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final authControllerState = useProvider(authControllerProvider);
     final titleState = useProvider(titleStateProvider);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(titleState.state),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(10.0),
-        child: Login(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        // ボタンを押したとき
-        onPressed: () {
-          titleState.state = "こんにちは世界";
+    return authControllerState == null
+        ? LoginPage()
+        : Scaffold(
+            appBar: AppBar(
+              title: Text(titleState.state),
+            ),
+            body: Container(
+              padding: EdgeInsets.all(10.0),
+              child: Center(
+                  child: ExpandedButton('ログアウト', Colors.grey, () async {
+                context.read(authControllerProvider.notifier).signOut();
+              })),
+            ),
+            floatingActionButton: FloatingActionButton(
+              // ボタンを押したとき
+              onPressed: () {
+                titleState.state = "こんにちは世界";
 
-          print("ボタン押下");
-        },
-      ),
-    );
+                print("ボタン押下");
+              },
+            ),
+          );
   }
 }
