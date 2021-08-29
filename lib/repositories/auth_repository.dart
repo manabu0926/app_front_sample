@@ -34,16 +34,6 @@ class AuthRepository implements BaseAuthRepository {
   Stream<User?> get authStateChanges =>
       _read(firebaseAuthProvider).authStateChanges();
 
-  // // 匿名ユーザでログイン
-  // @override
-  // Future<void> signInAnonymously() async {
-  //   try {
-  //     await _read(firebaseAuthProvider).signInAnonymously();
-  //   } on FirebaseAuthException catch (e) {
-  //     throw CustomException(message: e.message);
-  //   }
-  // }
-
   // Googleでログイン
   @override
   Future<void> signInWithGoogle() async {
