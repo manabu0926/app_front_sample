@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:front/pages/login/login_model.dart';
-import 'package:front/presenters/buttons/expanded_button.dart';
 
-class LoginPage extends StatelessWidget {
+class NextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ログイン"),
+        title: Text("次のページ"),
       ),
       body: Container(
         padding: EdgeInsets.all(10.0),
@@ -15,8 +13,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ExpandedButton('Googleでログイン', Colors.blue,
-                  () async => LoginModel().signIn(context)),
+              Text("次のページ"),
             ],
           ),
         ),
