@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:front/general_providers.dart';
-import 'package:front/repositories/custom_exception.dart';
+import 'package:front/domain/custom_exception.dart';
+import 'package:front/providers/firebase_authentication.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,10 +16,6 @@ abstract class BaseAuthRepository {
   // ログアウト
   Future<void> signOut();
 }
-
-// AuthRepositoryを提供し、ref.readを渡してアクセスできるようにする
-final authRepositoryProvider =
-    Provider<AuthRepository>((ref) => AuthRepository(ref.read));
 
 // 認証リポジトリクラス
 class AuthRepository implements BaseAuthRepository {

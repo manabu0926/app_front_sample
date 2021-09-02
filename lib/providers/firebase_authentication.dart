@@ -1,21 +1,24 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:front/domain/repositories/auth_repository.dart';
 import 'package:front/general_providers.dart';
-import 'package:front/repositories/auth_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // @see: https://teech-lab.com/flutter-dartfirebase-authentication-anonymous/1704/?utm_source=rss&utm_medium=rss&utm_campaign=flutter-dartfirebase-authentication-anonymous
-final authControllerProvider = StateNotifierProvider<AuthController, User?>(
-  (ref) => AuthController(ref.read)..appStarted(),
-);
+final firebaseAuthProvider =
+    Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
-class AuthController extends StateNotifier<User?> {
+// AuthRepositoryを提供し、ref.readを渡してアクセスできるようにする
+final authRepositoryProvider =
+    Provider<AuthRepository>((ref) => AuthRepository(ref.read));
+
+class FirebaseAuthentication extends StateNotifier<User?> {
   final Reader _read;
 
   StreamSubscription<User?>? _authStateChangesSubscription;
 
-  AuthController(this._read) : super(null) {
+  FirebaseAuthentication(this._read) : super(null) {
     // 受信停止
     _authStateChangesSubscription?.cancel();
     // 受信開始
@@ -23,11 +26,11 @@ class AuthController extends StateNotifier<User?> {
         _read(authRepositoryProvider).authStateChanges.listen((user) async {
       state = user;
       if (user != null) {
+        print("いるよ");
         // final idToken = await user.getIdToken();
         // final currentUser = await UserApi().getUser(idToken);
-        _read(loginStateProvider).state = true;
       } else {
-        _read(loginStateProvider).state = false;
+        print("いないよ");
       }
     });
   }
@@ -37,17 +40,6 @@ class AuthController extends StateNotifier<User?> {
   void dispose() {
     _authStateChangesSubscription?.cancel();
     super.dispose();
-  }
-
-  // アプリ開始
-  void appStarted() async {
-    // Currentユーザを取得
-    final user = _read(authRepositoryProvider).getCurrentUser();
-    if (user == null) {
-      print('null更新した');
-    } else {
-      print(user.displayName);
-    }
   }
 
   // サインイン

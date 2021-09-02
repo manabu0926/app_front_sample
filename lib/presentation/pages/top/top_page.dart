@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:front/controllers/auth_controller.dart';
 import 'package:front/general_providers.dart';
-import 'package:front/pages/next/next_page.dart';
-import 'package:front/presenters/buttons/floating_round_button.dart';
-import 'package:front/presenters/cards/list_card.dart';
+import 'package:front/presentation/pages/next/next_page.dart';
+import 'package:front/presentation/presenters/buttons/floating_round_button.dart';
+import 'package:front/presentation/presenters/cards/list_card.dart';
+import 'package:front/providers/firebase_authentication.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TopPage extends HookWidget {
@@ -16,7 +16,7 @@ class TopPage extends HookWidget {
         title: Text(titleState.state),
         leading: IconButton(
             onPressed: () =>
-                context.read(authControllerProvider.notifier).signOut(),
+                context.read(firebaseAuthenticationProvider.notifier).signOut(),
             icon: Icon(Icons.logout)),
       ),
       body: Container(

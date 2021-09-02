@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:front/providers/firebase_authentication.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final firebaseAuthProvider =
-    Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
+final firebaseAuthenticationProvider =
+    StateNotifierProvider<FirebaseAuthentication, User?>(
+        (ref) => FirebaseAuthentication(ref.read));
 final titleStateProvider = StateProvider<String>((ref) => 'トップ');
-final loginStateProvider = StateProvider<bool>((ref) => false);

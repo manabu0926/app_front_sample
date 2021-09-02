@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:front/pages/login/login_model.dart';
-import 'package:front/presenters/buttons/expanded_button.dart';
+import 'package:front/general_providers.dart';
+import 'package:front/presentation/presenters/buttons/expanded_button.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -15,8 +16,12 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ExpandedButton('Googleでログイン', Colors.blue,
-                  () async => LoginModel().signIn(context)),
+              ExpandedButton(
+                  'Googleでログイン',
+                  Colors.blue,
+                  () async => context
+                      .read(firebaseAuthenticationProvider.notifier)
+                      .signIn()),
             ],
           ),
         ),
