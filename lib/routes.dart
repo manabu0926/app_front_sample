@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front/main.dart';
-import 'package:front/presentation/pages/next/next_page.dart';
+import 'package:front/presentation/pages/next_page.dart';
 
 class RouteGenerator {
   static const String top = '/';

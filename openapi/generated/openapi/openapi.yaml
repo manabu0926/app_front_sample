@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  description: Openapiのサンプル
+  title: API
+  version: v1
+servers:
+- url: http://localhost:8082/
+paths:
+  /users:
+    get:
+      operationId: getUsers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/user'
+                type: array
+          description: return user information
+      summary: すべてのユーザーを取得する
+      tags:
+      - users
+  /users/current:
+    get:
+      operationId: getCurrentUser
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: return user information
+      summary: 認証したユーザーを取得する
+      tags:
+      - users
+  /user/add:
+    post:
+      operationId: addUser
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: 佐藤 二郎
+              email: new@test.com
+              example: qwertyudf123yuikassdc23
+            schema:
+              $ref: '#/components/schemas/user'
+        description: user to create
+      responses:
+        "201":
+          description: CREATED
+      summary: 新しいユーザーを追加する
+      tags:
+      - addUser
+components:
+  schemas:
+    user:
+      example:
+        name: 山田 太郎
+        label: qwertyudf123yuikassdc34
+        email: test@test.com
+      properties:
+        name:
+          description: ユーザーのフルネーム
+          example: 山田 太郎
+          type: string
+        email:
+          description: ユーザーのメールアドレス
+          example: test@test.com
+          type: string
+        label:
+          description: ユーザー情報のUID
+          example: qwertyudf123yuikassdc34
+          type: string
+      required:
+      - email
+      - label
+      - name

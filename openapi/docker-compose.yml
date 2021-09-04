@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  app-frontend-sample-swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: app-frontend-sample-swagger-ui
+    volumes:
+      - ./openapi.yml:/usr/share/nginx/html/openapi.yml
+    environment:
+      API_URL: openapi.yml
+    ports:
+      - "8080:8080"
+  app-frontend-sample-swagger-api:
+    image: stoplight/prism:3
+    container_name: app-frontend-sample-swagger-api
+    ports:
+      - "8082:4010"
+    command: mock -d -h 0.0.0.0 /openapi.yml
+    volumes:
+      - ./generated/openapi/openapi.yaml:/openapi.yml
+  app-frontend-sample-openapi-generator:
+    image: openapitools/openapi-generator-cli
+    container_name: app-frontend-sample-openapi-generator
+    volumes:
+      - ./:/workspace

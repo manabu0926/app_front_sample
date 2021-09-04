@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: API
+  description: Openapiのサンプル
+  version: v1
+
+servers:
+  # docker-composeでprismをホストしているポート番号に変更
+  - url: 'http://localhost:8082/'
+
+paths:
+  /users:
+    get:
+      summary: すべてのユーザーを取得する
+      operationId: getUsers
+      tags:
+        - users
+      responses:
+        '200':
+          description: return user information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/user"
+  /users/current:
+    get:
+      summary: 認証したユーザーを取得する
+      operationId: getCurrentUser
+      tags:
+        - users
+      responses:
+        '200':
+          description: return user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+  /user/add:
+    post:
+      summary: 新しいユーザーを追加する
+      operationId: addUser
+      tags:
+        - users
+      requestBody:
+        description: ユーザー作成の引数
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+            example:
+              name: 佐藤 二郎
+              email: new@test.com
+              example: qwertyudf123yuikassdc23
+      responses:
+        '201':
+          description: CREATED
+
+components:
+  schemas:
+    user:
+      required:
+        - name
+        - email
+        - label
+      properties:
+        name:
+          type: string
+          example: 山田 太郎
+          description: ユーザーのフルネーム
+        email:
+          type: string
+          example: test@test.com
+          description: ユーザーのメールアドレス
+        label:
+          type: string
+          example: qwertyudf123yuikassdc34
+          description: ユーザー情報のUID

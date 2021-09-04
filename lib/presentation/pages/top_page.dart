@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:front/general_providers.dart';
-import 'package:front/presentation/pages/next/next_page.dart';
+import 'package:front/presentation/pages/next_page.dart';
 import 'package:front/presentation/presenters/buttons/floating_round_button.dart';
 import 'package:front/presentation/presenters/cards/list_card.dart';
-import 'package:front/providers/firebase_authentication.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TopPage extends HookWidget {
