@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:front/domain/custom_exception.dart';
 
 // 抽象クラスを定義
@@ -16,8 +16,8 @@ class UserRepository implements BaseUserRepository {
   @override
   Future<dynamic> getCurrentUser(String idToken) async {
     try {
-      const String BASE_URL = 'http://localhost:8082';
-      String url = "${BASE_URL}/users/current";
+      final baseUrl = dotenv.env['BASE_URL'];
+      String url = "${baseUrl}/users/current";
       Options options = Options(headers: {'authorization': "Bearer $idToken"});
       var result = await dio.get(url, options: options);
       return result.data;
