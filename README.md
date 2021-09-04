@@ -13,16 +13,12 @@
 
 ```
 flutter pub get
-
 open -A Simulator
-
+cd  ./openapi ; docker-compose up --build
 flutter run
 ```
 
 ### openapiのデータ更新方法
 ```
 openapi-generator generate -i openapi/openapi.yml -g openapi-yaml -o ./openapi/generated
-
-cd openapi/generated/server ; flutter pub get ; flutter packages pub run build_runner build
-
 ```
