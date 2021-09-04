@@ -11,13 +11,13 @@ abstract class BaseUserRepository {
 
 // 認証リポジトリクラス
 class UserRepository implements BaseUserRepository {
-  var dio = new Dio();
+  var dio = Dio();
+  final baseUserUrl = "${dotenv.env['BASE_URL']}/users";
 
   @override
   Future<dynamic> getCurrentUser(String idToken) async {
     try {
-      final baseUrl = dotenv.env['BASE_URL'];
-      String url = "${baseUrl}/users/current";
+      String url = "$baseUserUrl/current";
       Options options = Options(headers: {'authorization': "Bearer $idToken"});
       var result = await dio.get(url, options: options);
       return result.data;
@@ -29,10 +29,7 @@ class UserRepository implements BaseUserRepository {
   @override
   Future<List<dynamic>> getUsers() async {
     try {
-      // final user = _read(firebaseAuthProvider).currentUser;
-      const String BASE_URL = 'http://localhost:8082';
-      String url = "${BASE_URL}/users";
-      var result = await dio.get(url);
+      var result = await dio.get(baseUserUrl);
       return result.data;
     } on DioError catch (e) {
       throw CustomException(message: e.message);
@@ -42,10 +39,7 @@ class UserRepository implements BaseUserRepository {
   @override
   Future<int?> addUser() async {
     try {
-      // final user = _read(firebaseAuthProvider).currentUser;
-      const String BASE_URL = 'http://localhost:8082';
-      String url = "${BASE_URL}/users";
-      var result = await dio.post(url);
+      var result = await dio.post(baseUserUrl);
       return result.statusCode;
     } on DioError catch (e) {
       throw CustomException(message: e.message);

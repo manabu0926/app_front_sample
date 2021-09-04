@@ -5,11 +5,12 @@ class ExpandedButton extends StatelessWidget {
   final Color buttonColor;
   final Function() onPressed;
 
-  ExpandedButton(this.text, this.buttonColor, this.onPressed);
+  const ExpandedButton(this.text, this.buttonColor, this.onPressed, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 48,
       width: double.infinity,
       child: ElevatedButton(
@@ -18,9 +19,7 @@ class ExpandedButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: TextStyle(
-            fontSize: 16,
-          ),
+          style: const TextStyle(fontSize: 16),
         ),
         onPressed: onPressed,
       ),

@@ -9,7 +9,7 @@ class RouteGenerator {
   /// 1.ナビゲーション用の固有名追加
   static const String next = '/next';
 
-  RouteGenerator._() {}
+  RouteGenerator._();
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -17,15 +17,15 @@ class RouteGenerator {
       /// 2.ナビゲーション用の遷移追加
       case top:
         return MaterialPageRoute(
-          builder: (_) => MyHomePage(),
+          builder: (_) => const MyHomePage(),
         );
       case next:
         return MaterialPageRoute(
-          builder: (_) => NextPage(),
+          builder: (_) => const NextPage(),
         );
       // 該当しない場合エラー
       default:
-        throw RouteException('Route not found');
+        throw const RouteException('Route not found');
     }
   }
 }

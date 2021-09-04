@@ -14,11 +14,12 @@ void main() async {
   await Firebase.initializeApp();
   await dotenv.load(fileName: ".env");
   runApp(
-    ProviderScope(child: MyApp()),
+    const ProviderScope(child: MyApp()),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,15 +32,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends HookWidget {
+  const MyHomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final firebaseAuthState = useProvider(firebaseAuthenticationProvider);
-    return firebaseAuthState == null ? LoginPage() : TopPage();
+    return firebaseAuthState == null ? const LoginPage() : const TopPage();
   }
 }

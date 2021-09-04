@@ -5,7 +5,8 @@ class ListCard extends StatelessWidget {
   final String subtitle;
   final Widget page;
 
-  ListCard(this.title, this.subtitle, this.page);
+  const ListCard(this.title, this.subtitle, this.page, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,9 @@ class ListCard extends StatelessWidget {
           width: double.infinity,
           height: 100,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: ListTile(
-              leading: Icon(Icons.shop, size: 50),
+              leading: const Icon(Icons.shop, size: 50),
               title: Text(title),
               subtitle: Text(subtitle),
             ),

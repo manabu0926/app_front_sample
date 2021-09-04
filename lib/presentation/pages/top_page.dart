@@ -7,6 +7,7 @@ import 'package:front/presentation/presenters/cards/list_card.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TopPage extends HookWidget {
+  const TopPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final titleState = useProvider(titleStateProvider);
@@ -16,10 +17,10 @@ class TopPage extends HookWidget {
         leading: IconButton(
             onPressed: () =>
                 context.read(firebaseAuthenticationProvider.notifier).signOut(),
-            icon: Icon(Icons.logout)),
+            icon: const Icon(Icons.logout)),
       ),
       body: Container(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             ListCard('タイトル', 'サブタイトルをここに記載します', NextPage()),
@@ -27,7 +28,7 @@ class TopPage extends HookWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingRoundButton(NextPage()),
+      floatingActionButton: const FloatingRoundButton(NextPage()),
     );
   }
 }

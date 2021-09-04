@@ -4,14 +4,15 @@ import 'package:front/presentation/presenters/buttons/expanded_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ログイン"),
+        title: const Text("ログイン"),
       ),
       body: Container(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Form(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
