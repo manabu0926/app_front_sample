@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:flutter/material.dart';
 import 'package:front/domain/models/user.dart';
 import 'package:front/domain/repositories/auth_repository.dart';
 import 'package:front/domain/repositories/user_repository.dart';
@@ -28,7 +29,6 @@ class Authentication extends StateNotifier<User?> {
     _authStateChangesSubscription = _read(authRepositoryProvider).authStateChanges.listen((user) async {
       final loading = _read(loadingProvider);
       loading.state = true;
-
       if (user != null) {
         String idToken = await user.getIdToken();
         User currentUser = await UserRepository().getCurrentUser(idToken);
@@ -48,14 +48,17 @@ class Authentication extends StateNotifier<User?> {
   }
 
   // サインイン
-  void signIn() async {
+  Future<bool> signIn() async {
     final loading = _read(loadingProvider);
     loading.state = true;
     final isAuth = await _read(authRepositoryProvider).signInWithGoogle();
+
     if (!isAuth) {
       // 認証成功時にはapi取得後にloadingを解除したいので、ここでは認証失敗時のみloadingを解除する
       loading.state = false;
     }
+
+    return isAuth;
   }
 
   // サインアウト
