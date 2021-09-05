@@ -1,0 +1,17 @@
+required:
+  - name
+  - email
+  - label
+properties:
+  name:
+    type: string
+    example: 山田 太郎
+    description: ユーザーのフルネーム
+  email:
+    type: string
+    example: test@test.com
+    description: ユーザーのメールアドレス
+  label:
+    type: string
+    example: qwertyudf123yuikassdc34
+    description: ユーザー情報のUID
