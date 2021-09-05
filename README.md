@@ -1,8 +1,10 @@
 ## Flutterアプリ作成サンプルテンプレート
 
 - FirebaseAuthentication
-- OpenApi
+- OpenApi(dockerで立ち上げるように管理)
 - Riverpod
+- flutter_lint
+- 定数管理
 - 多言語対応
 - DDDっぽいフォルダ構成
 
