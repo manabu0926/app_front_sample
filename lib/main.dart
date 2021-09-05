@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:front/general_providers.dart';
 import 'package:front/presentation/pages/login_page.dart';
 import 'package:front/presentation/pages/top_page.dart';
+import 'package:front/presentation/presenters/modals/full_display_loading.dart';
 import 'package:front/routes.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,9 +38,14 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends HookWidget {
   const MyHomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final currentUser = useProvider(authenticationProvider);
-    return currentUser == null ? const LoginPage() : const TopPage();
+    final loading = useProvider(loadingProvider);
+    return Stack(alignment: Alignment.center, children: [
+      WillPopScope(onWillPop: () async => false, child: currentUser == null ? const LoginPage() : const TopPage()),
+      FullDisplayLoading(visible: loading.state),
+    ]);
   }
 }

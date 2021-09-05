@@ -31,12 +31,12 @@ class AuthRepository implements BaseAuthRepository {
 
   // Googleでログイン
   @override
-  Future<void> signInWithGoogle() async {
+  Future<bool> signInWithGoogle() async {
     try {
       final googleUser = await GoogleSignIn().signIn();
 
       if (googleUser == null) {
-        return;
+        return false;
       }
       // Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
@@ -47,6 +47,8 @@ class AuthRepository implements BaseAuthRepository {
         idToken: googleAuth.idToken,
       );
       await _read(firebaseAuthProvider).signInWithCredential(credential);
+
+      return true;
     } on FirebaseAuthException catch (e) {
       throw CustomException(message: e.message);
     }
