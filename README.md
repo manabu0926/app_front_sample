@@ -1,4 +1,5 @@
 ## Flutterアプリ作成サンプルテンプレート
+firestoreのDBではなく、api通信を使用して別でサーバーを立てる際の参考として作成しました。
 
 - FirebaseAuthentication
 - OpenApi(dockerで立ち上げるように管理)
