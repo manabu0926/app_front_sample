@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:front/config/const/theme_font.dart';
 
 class ExpandedButton extends StatelessWidget {
   final String text;
   final Color buttonColor;
   final Function() onPressed;
 
-  const ExpandedButton(this.text, this.buttonColor, this.onPressed, {Key? key})
-      : super(key: key);
+  const ExpandedButton(this.text, this.buttonColor, this.onPressed, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ExpandedButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: const TextStyle(fontSize: 16),
+          style: ThemeFont.main,
         ),
         onPressed: onPressed,
       ),

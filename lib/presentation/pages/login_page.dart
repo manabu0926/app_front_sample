@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front/config/const/theme_color.dart';
+import 'package:front/config/const/theme_spacer.dart';
 import 'package:front/general_providers.dart';
 import 'package:front/presentation/presenters/buttons/expanded_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,17 +14,13 @@ class LoginPage extends StatelessWidget {
         title: const Text("ログイン"),
       ),
       body: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: ThemeSpacer.main,
         child: Form(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ExpandedButton(
-                  'Googleでログイン',
-                  Colors.blue,
-                  () async => context
-                      .read(firebaseAuthenticationProvider.notifier)
-                      .signIn()),
+              ExpandedButton('Googleでログイン', ThemeColor.main,
+                  () async => context.read(firebaseAuthenticationProvider.notifier).signIn()),
             ],
           ),
         ),

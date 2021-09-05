@@ -27,8 +27,7 @@ class AuthRepository implements BaseAuthRepository {
 
   // Readerを利用して、firebaseAuth.instanceにアクセス
   @override
-  Stream<User?> get authStateChanges =>
-      _read(firebaseAuthProvider).authStateChanges();
+  Stream<User?> get authStateChanges => _read(firebaseAuthProvider).authStateChanges();
 
   // Googleでログイン
   @override
@@ -40,8 +39,7 @@ class AuthRepository implements BaseAuthRepository {
         return;
       }
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
       // Create a new credential
       final OAuthCredential credential = GoogleAuthProvider.credential(

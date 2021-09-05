@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:front/config/const/theme_spacer.dart';
 
 class ListCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final Widget page;
 
-  const ListCard(this.title, this.subtitle, this.page, {Key? key})
-      : super(key: key);
+  const ListCard(this.title, this.subtitle, this.page, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ListCard extends StatelessWidget {
           width: double.infinity,
           height: 100,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: ThemeSpacer.main,
             child: ListTile(
               leading: const Icon(Icons.shop, size: 50),
               title: Text(title),

@@ -18,7 +18,7 @@ class UserRepository implements BaseUserRepository {
   Future<dynamic> getCurrentUser(String idToken) async {
     try {
       String url = "$baseUserUrl/current";
-      Options options = Options(headers: {'authorization': "Bearer $idToken"});
+      final options = Options(headers: {'authorization': "Bearer $idToken"});
       var result = await dio.get(url, options: options);
       return result.data;
     } on DioError catch (e) {

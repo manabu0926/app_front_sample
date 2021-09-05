@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front/config/const/theme_spacer.dart';
 
 class NextPage extends StatelessWidget {
   const NextPage({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class NextPage extends StatelessWidget {
         title: const Text("次のページ"),
       ),
       body: Container(
-        padding: const EdgeInsets.all(10.0),
+        padding: ThemeSpacer.main,
         child: Form(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

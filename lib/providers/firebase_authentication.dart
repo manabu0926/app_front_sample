@@ -8,14 +8,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 // @see: https://teech-lab.com/flutter-dartfirebase-authentication-anonymous/1704/?utm_source=rss&utm_medium=rss&utm_campaign=flutter-dartfirebase-authentication-anonymous
-final firebaseAuthProvider = Provider<FirebaseAuthn.FirebaseAuth>(
-    (ref) => FirebaseAuthn.FirebaseAuth.instance);
+final firebaseAuthProvider = Provider<FirebaseAuthn.FirebaseAuth>((ref) => FirebaseAuthn.FirebaseAuth.instance);
 
 // final userProvider = StateProvider<User?>((ref) => null);
 
 // AuthRepositoryを提供し、ref.readを渡してアクセスできるようにする
-final authRepositoryProvider =
-    Provider<AuthRepository>((ref) => AuthRepository(ref.read));
+final authRepositoryProvider = Provider<AuthRepository>((ref) => AuthRepository(ref.read));
 
 class FirebaseAuthentication extends StateNotifier<FirebaseAuthn.User?> {
   // User? currentUser = null;
@@ -27,8 +25,7 @@ class FirebaseAuthentication extends StateNotifier<FirebaseAuthn.User?> {
     // 受信停止
     _authStateChangesSubscription?.cancel();
     // 受信開始
-    _authStateChangesSubscription =
-        _read(authRepositoryProvider).authStateChanges.listen((user) async {
+    _authStateChangesSubscription = _read(authRepositoryProvider).authStateChanges.listen((user) async {
       state = user;
       if (user != null) {
         print("いるよ");
