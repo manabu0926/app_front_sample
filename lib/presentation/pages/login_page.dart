@@ -19,8 +19,8 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ExpandedButton('Googleでログイン', ThemeColor.main,
-                  () async => context.read(firebaseAuthenticationProvider.notifier).signIn()),
+              ExpandedButton(
+                  'Googleでログイン', ThemeColor.main, () async => context.read(authenticationProvider.notifier).signIn()),
             ],
           ),
         ),

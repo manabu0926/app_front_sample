@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:front/domain/custom_exception.dart';
-import 'package:front/providers/firebase_authentication.dart';
+import 'package:front/presentation/providers/authentication.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

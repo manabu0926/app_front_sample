@@ -15,9 +15,7 @@ class TopPage extends HookWidget {
       appBar: AppBar(
         title: Text(titleState.state),
         leading: IconButton(
-            onPressed: () =>
-                context.read(firebaseAuthenticationProvider.notifier).signOut(),
-            icon: const Icon(Icons.logout)),
+            onPressed: () => context.read(authenticationProvider.notifier).signOut(), icon: const Icon(Icons.logout)),
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:front/domain/custom_exception.dart';
+import 'package:front/domain/models/user.dart';
 
 // 抽象クラスを定義
 abstract class BaseUserRepository {
@@ -15,12 +16,16 @@ class UserRepository implements BaseUserRepository {
   final baseUserUrl = "${dotenv.env['BASE_URL']}/users";
 
   @override
-  Future<dynamic> getCurrentUser(String idToken) async {
+  Future<User> getCurrentUser(String idToken) async {
     try {
       String url = "$baseUserUrl/current";
       final options = Options(headers: {'authorization': "Bearer $idToken"});
-      var result = await dio.get(url, options: options);
-      return result.data;
+      var result = (await dio.get(url, options: options)).data;
+      return User(
+        email: result['label'],
+        name: result['name'],
+        label: result['label'],
+      );
     } on DioError catch (e) {
       throw CustomException(message: e.message);
     }

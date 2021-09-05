@@ -9,7 +9,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../../../openapi.yml#/components/schemas/user
+            $ref: '../../../openapi.yml#/components/schemas/user'
     '401':
       description: "Unauthorized"
       content:

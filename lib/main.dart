@@ -39,7 +39,7 @@ class MyHomePage extends HookWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final firebaseAuthState = useProvider(firebaseAuthenticationProvider);
-    return firebaseAuthState == null ? const LoginPage() : const TopPage();
+    final currentUser = useProvider(authenticationProvider);
+    return currentUser == null ? const LoginPage() : const TopPage();
   }
 }
