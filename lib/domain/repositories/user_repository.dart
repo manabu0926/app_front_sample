@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:front/config/const/theme_setting.dart';
 import 'package:front/domain/custom_exception.dart';
 import 'package:front/domain/models/user/user.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -13,11 +14,7 @@ abstract class BaseUserRepository {
 
 // 認証リポジトリクラス
 class UserRepository implements BaseUserRepository {
-  var dio = Dio(BaseOptions(
-      receiveDataWhenStatusError: true,
-      connectTimeout: 3 * 1000, // 60 seconds
-      receiveTimeout: 3 * 1000 // 60 seconds
-      ));
+  Dio dio = Dio(ThemeSetting.baseOptions);
   final baseUserUrl = "${dotenv.env['BASE_URL']}/users";
 
   @override
