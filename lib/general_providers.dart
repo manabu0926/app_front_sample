@@ -1,4 +1,4 @@
-import 'package:front/domain/models/user.dart';
+import 'package:front/domain/models/user/user.dart';
 import 'package:front/presentation/providers/authentication.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

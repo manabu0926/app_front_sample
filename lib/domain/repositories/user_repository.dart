@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:front/domain/custom_exception.dart';
-import 'package:front/domain/models/user.dart';
+import 'package:front/domain/models/user/user.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 // 抽象クラスを定義
@@ -25,12 +25,8 @@ class UserRepository implements BaseUserRepository {
     try {
       String url = '$baseUserUrl/current';
       final options = Options(headers: {'authorization': 'Bearer $idToken'});
-      var result = (await dio.get(url, options: options)).data;
-      return User(
-        email: result['label'],
-        name: result['name'],
-        label: result['label'],
-      );
+      final Map<String, dynamic> result = (await dio.get(url, options: options)).data;
+      return User.fromJson(result);
     } on DioError catch (e, stackTrace) {
       Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);

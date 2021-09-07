@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:flutter/material.dart';
-import 'package:front/domain/models/user.dart';
+import 'package:front/domain/models/user/user.dart';
 import 'package:front/domain/repositories/auth_repository.dart';
 import 'package:front/domain/repositories/user_repository.dart';
 import 'package:front/general_providers.dart';
