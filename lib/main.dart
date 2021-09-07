@@ -5,19 +5,22 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:front/general_providers.dart';
 import 'package:front/presentation/pages/login_page.dart';
 import 'package:front/presentation/pages/top_page.dart';
-import 'package:front/presentation/presenters/dynamics/custom_snackbar.dart';
-
 import 'package:front/presentation/presenters/modals/full_display_loading.dart';
 import 'package:front/routes.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await dotenv.load(fileName: ".env");
-  runApp(
-    const ProviderScope(child: MyApp()),
+  await dotenv.load(fileName: '.env');
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = dotenv.env['SENTRY_DSN'];
+    },
+    appRunner: () => runApp(
+      const ProviderScope(child: MyApp()),
+    ),
   );
 }
 
@@ -30,8 +33,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       initialRoute: RouteGenerator.top, // routes.dart依存
       onGenerateRoute: RouteGenerator.generateRoute,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MyHomePage(),
     );

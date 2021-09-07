@@ -66,13 +66,24 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - package_info_plus (0.4.5):
+    - Flutter
   - PromisesObjC (2.0.0)
+  - Sentry (7.2.8):
+    - Sentry/Core (= 7.2.8)
+  - Sentry/Core (7.2.8)
+  - sentry_flutter (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - Sentry (~> 7.2.7)
 
 DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
 
 SPEC REPOS:
   trunk:
@@ -88,6 +99,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - PromisesObjC
+    - Sentry
 
 EXTERNAL SOURCES:
   firebase_auth:
@@ -98,6 +110,10 @@ EXTERNAL SOURCES:
     :path: Flutter
   google_sign_in:
     :path: ".symlinks/plugins/google_sign_in/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  sentry_flutter:
+    :path: ".symlinks/plugins/sentry_flutter/ios"
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
@@ -115,7 +131,10 @@ SPEC CHECKSUMS:
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  Sentry: f315ca2086f72f825b1b2e0cdebe81b44131cbd2
+  sentry_flutter: 28e1e38fe797d3e5d766c596324834fed599bc0f
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 

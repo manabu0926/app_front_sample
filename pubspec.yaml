@@ -23,9 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-
   built_value: '>=8.1.0 <9.0.0'
   built_collection: '>=5.1.0 <6.0.0'
   cupertino_icons: ^1.0.3
@@ -37,7 +34,7 @@ dependencies:
   google_sign_in: ^5.1.0
   hooks_riverpod: ^0.14.0+4
   http: ^0.13.3
-  intl: ^0.17.0
+  sentry_flutter: ^6.0.0
 
 dev_dependencies:
   built_value_generator: '>=8.1.0 <9.0.0'

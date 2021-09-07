@@ -3,6 +3,7 @@ import 'package:front/domain/custom_exception.dart';
 import 'package:front/presentation/providers/authentication.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 // 抽象クラスを定義
 abstract class BaseAuthRepository {
@@ -49,7 +50,8 @@ class AuthRepository implements BaseAuthRepository {
       await _read(firebaseAuthProvider).signInWithCredential(credential);
 
       return true;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, stackTrace) {
+      Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);
     }
   }
@@ -59,7 +61,8 @@ class AuthRepository implements BaseAuthRepository {
   User? getCurrentUser() {
     try {
       return _read(firebaseAuthProvider).currentUser;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, stackTrace) {
+      Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);
     }
   }
@@ -70,7 +73,8 @@ class AuthRepository implements BaseAuthRepository {
     try {
       // サインアウト
       await _read(firebaseAuthProvider).signOut();
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, stackTrace) {
+      Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);
     }
   }
