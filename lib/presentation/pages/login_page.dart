@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front/config/const/theme_word.dart';
 import 'package:front/config/const/theme_color.dart';
 import 'package:front/config/const/theme_spacer.dart';
 import 'package:front/general_providers.dart';
@@ -12,7 +13,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ログイン"),
+        title: const Text(ThemeWord.login),
       ),
       body: Container(
         padding: ThemeSpacer.main,
@@ -20,10 +21,10 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ExpandedButton('Googleでログイン', ThemeColor.main, () async {
+              ExpandedButton(ThemeWord.loginGoogle, ThemeColor.main, () async {
                 final isAuth = await context.read(authenticationProvider.notifier).signIn();
                 if (isAuth) {
-                  CustomSnackbar().showSnackBar('ログインしました', context);
+                  CustomSnackbar().showSnackBar(ThemeWord.signin, context);
                 }
               }),
             ],

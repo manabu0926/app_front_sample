@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:front/config/const/theme_word.dart';
 import 'package:front/general_providers.dart';
 import 'package:front/presentation/pages/next_page.dart';
 import 'package:front/presentation/presenters/buttons/floating_round_button.dart';
@@ -12,14 +13,13 @@ class TopPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleState = useProvider(titleStateProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text(titleState.state),
+        title: const Text(ThemeWord.top),
         leading: IconButton(
             onPressed: () {
               context.read(authenticationProvider.notifier).signOut();
-              CustomSnackbar().showSnackBar('ログアウトしました', context);
+              CustomSnackbar().showSnackBar(ThemeWord.signout, context);
             },
             icon: const Icon(Icons.logout)),
       ),
