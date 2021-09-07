@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Auth Template',
+      title: 'Flutter Template',
       debugShowCheckedModeBanner: true,
       initialRoute: RouteGenerator.top, // routes.dart依存
       onGenerateRoute: RouteGenerator.generateRoute,

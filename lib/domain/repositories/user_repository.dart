@@ -13,7 +13,11 @@ abstract class BaseUserRepository {
 
 // 認証リポジトリクラス
 class UserRepository implements BaseUserRepository {
-  var dio = Dio();
+  var dio = Dio(BaseOptions(
+      receiveDataWhenStatusError: true,
+      connectTimeout: 3 * 1000, // 60 seconds
+      receiveTimeout: 3 * 1000 // 60 seconds
+      ));
   final baseUserUrl = "${dotenv.env['BASE_URL']}/users";
 
   @override

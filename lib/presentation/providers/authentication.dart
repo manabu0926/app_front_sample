@@ -28,15 +28,19 @@ class Authentication extends StateNotifier<User?> {
     // 受信開始
     _authStateChangesSubscription = _read(authRepositoryProvider).authStateChanges.listen((user) async {
       final loading = _read(loadingProvider);
-      loading.state = true;
-      if (user != null) {
-        String idToken = await user.getIdToken();
-        User currentUser = await UserRepository().getCurrentUser(idToken);
-        state = currentUser;
-      } else {
-        state = null;
+      try {
+        loading.state = true;
+        if (user != null) {
+          String idToken = await user.getIdToken();
+          User currentUser = await UserRepository().getCurrentUser(idToken);
+          state = currentUser;
+        } else {
+          state = null;
+        }
+        loading.state = false;
+      } catch (e) {
+        loading.state = false;
       }
-      loading.state = false;
     });
   }
 
