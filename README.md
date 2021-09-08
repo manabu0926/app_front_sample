@@ -6,7 +6,6 @@ firestoreのDBではなく、api通信を使用して別でサーバーを立て
 - Riverpod
 - fleezed
 - flutter_lint
-- 定数管理
 - 多言語対応
 - DDDっぽいフォルダ構成
 
