@@ -64,6 +64,21 @@ paths:
       summary: 認証したユーザーを取得する
       tags:
       - users
+  /shops:
+    get:
+      operationId: getShops
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/shop'
+                type: array
+          description: return shop information
+      summary: すべての店舗情報を取得する
+      tags:
+      - shops
 components:
   schemas:
     user:
@@ -87,6 +102,30 @@ components:
       required:
       - email
       - label
+      - name
+      type: object
+    shop:
+      example:
+        name: 山田整骨院
+        logo: aaa.png
+        label: qwertyudf123yuikassdc34
+      properties:
+        name:
+          description: 店舗名
+          example: 山田整骨院
+          type: string
+        logo:
+          description: 店舗のロゴ
+          example: aaa.png
+          format: byte
+          type: string
+        label:
+          description: 店舗情報のUID
+          example: qwertyudf123yuikassdc34
+          type: string
+      required:
+      - label
+      - logo
       - name
       type: object
     unauthorized:

@@ -13,10 +13,12 @@ paths:
     $ref: './resources/path_info/users/root.yml'
   /users/current:
     $ref: './resources/path_info/users/current.yml'
-
+  /shops:
+    $ref: './resources/path_info/shops/root.yml'
 components:
   # ここに追加したいentityの定義及び参照ファイルのrefを記載
   schemas:
     user:
       $ref: './resources/components/schemas/user.yml'
-      
+    shop:
+      $ref: './resources/components/schemas/shop.yml'

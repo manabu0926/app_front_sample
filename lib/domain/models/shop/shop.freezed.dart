@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'user.dart';
+part of 'shop.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,71 +12,71 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+Shop _$ShopFromJson(Map<String, dynamic> json) {
+  return _Shop.fromJson(json);
 }
 
 /// @nodoc
-class _$UserTearOff {
-  const _$UserTearOff();
+class _$ShopTearOff {
+  const _$ShopTearOff();
 
-  _User call(
-      {required String email, required String name, required String label}) {
-    return _User(
-      email: email,
+  _Shop call(
+      {required String name, required String logo, required String label}) {
+    return _Shop(
       name: name,
+      logo: logo,
       label: label,
     );
   }
 
-  User fromJson(Map<String, Object> json) {
-    return User.fromJson(json);
+  Shop fromJson(Map<String, Object> json) {
+    return Shop.fromJson(json);
   }
 }
 
 /// @nodoc
-const $User = _$UserTearOff();
+const $Shop = _$ShopTearOff();
 
 /// @nodoc
-mixin _$User {
-  String get email => throw _privateConstructorUsedError;
+mixin _$Shop {
   String get name => throw _privateConstructorUsedError;
+  String get logo => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $ShopCopyWith<Shop> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
-  $Res call({String email, String name, String label});
+abstract class $ShopCopyWith<$Res> {
+  factory $ShopCopyWith(Shop value, $Res Function(Shop) then) =
+      _$ShopCopyWithImpl<$Res>;
+  $Res call({String name, String logo, String label});
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
+  _$ShopCopyWithImpl(this._value, this._then);
 
-  final User _value;
+  final Shop _value;
   // ignore: unused_field
-  final $Res Function(User) _then;
+  final $Res Function(Shop) _then;
 
   @override
   $Res call({
-    Object? email = freezed,
     Object? name = freezed,
+    Object? logo = freezed,
     Object? label = freezed,
   }) {
     return _then(_value.copyWith(
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logo: logo == freezed
+          ? _value.logo
+          : logo // ignore: cast_nullable_to_non_nullable
               as String,
       label: label == freezed
           ? _value.label
@@ -87,36 +87,36 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
-      __$UserCopyWithImpl<$Res>;
+abstract class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
+  factory _$ShopCopyWith(_Shop value, $Res Function(_Shop) then) =
+      __$ShopCopyWithImpl<$Res>;
   @override
-  $Res call({String email, String name, String label});
+  $Res call({String name, String logo, String label});
 }
 
 /// @nodoc
-class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
-      : super(_value, (v) => _then(v as _User));
+class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
+    implements _$ShopCopyWith<$Res> {
+  __$ShopCopyWithImpl(_Shop _value, $Res Function(_Shop) _then)
+      : super(_value, (v) => _then(v as _Shop));
 
   @override
-  _User get _value => super._value as _User;
+  _Shop get _value => super._value as _Shop;
 
   @override
   $Res call({
-    Object? email = freezed,
     Object? name = freezed,
+    Object? logo = freezed,
     Object? label = freezed,
   }) {
-    return _then(_User(
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_Shop(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logo: logo == freezed
+          ? _value.logo
+          : logo // ignore: cast_nullable_to_non_nullable
               as String,
       label: label == freezed
           ? _value.label
@@ -128,42 +128,42 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User with DiagnosticableTreeMixin implements _User {
-  const _$_User({required this.email, required this.name, required this.label});
+class _$_Shop with DiagnosticableTreeMixin implements _Shop {
+  const _$_Shop({required this.name, required this.logo, required this.label});
 
-  factory _$_User.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserFromJson(json);
+  factory _$_Shop.fromJson(Map<String, dynamic> json) =>
+      _$_$_ShopFromJson(json);
 
-  @override
-  final String email;
   @override
   final String name;
+  @override
+  final String logo;
   @override
   final String label;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(email: $email, name: $name, label: $label)';
+    return 'Shop(name: $name, logo: $logo, label: $label)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'User'))
-      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('type', 'Shop'))
       ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('logo', logo))
       ..add(DiagnosticsProperty('label', label));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _User &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
+        (other is _Shop &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.logo, logo) ||
+                const DeepCollectionEquality().equals(other.logo, logo)) &&
             (identical(other.label, label) ||
                 const DeepCollectionEquality().equals(other.label, label)));
   }
@@ -171,36 +171,36 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(logo) ^
       const DeepCollectionEquality().hash(label);
 
   @JsonKey(ignore: true)
   @override
-  _$UserCopyWith<_User> get copyWith =>
-      __$UserCopyWithImpl<_User>(this, _$identity);
+  _$ShopCopyWith<_Shop> get copyWith =>
+      __$ShopCopyWithImpl<_Shop>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserToJson(this);
+    return _$_$_ShopToJson(this);
   }
 }
 
-abstract class _User implements User {
-  const factory _User(
-      {required String email,
-      required String name,
-      required String label}) = _$_User;
+abstract class _Shop implements Shop {
+  const factory _Shop(
+      {required String name,
+      required String logo,
+      required String label}) = _$_Shop;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+  factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
-  @override
-  String get email => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  String get logo => throw _privateConstructorUsedError;
   @override
   String get label => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
+  _$ShopCopyWith<_Shop> get copyWith => throw _privateConstructorUsedError;
 }

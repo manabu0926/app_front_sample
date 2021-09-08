@@ -34,20 +34,21 @@ dependencies:
   flutter_hooks: ^0.17.0
   google_sign_in: ^5.1.0
   hooks_riverpod: ^0.14.0+4
+  json_annotation: ^4.0.1
   http: ^0.13.3
   sentry_flutter: ^6.0.0
 
 dev_dependencies:
   built_value_generator: '>=8.1.0 <9.0.0'
-  build_runner:
+  build_runner: ^2.0.6
   freezed: ^0.14.2
+  json_serializable: ^4.1.4
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
   test: '>=1.16.0 <1.17.0'
 
 flutter:
-  generate: true
   uses-material-design: true
 
 
