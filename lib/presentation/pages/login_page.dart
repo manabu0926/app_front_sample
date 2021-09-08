@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ExpandedButton(ThemeWord.loginGoogle, ThemeColor.main, () async {
-                final isAuth = await context.read(authenticationProvider.notifier).signIn();
+                final isAuth = await context.read(authentication.notifier).signIn();
                 if (isAuth) {
                   CustomSnackbar().showSnackBar(ThemeWord.signin, context);
                 }

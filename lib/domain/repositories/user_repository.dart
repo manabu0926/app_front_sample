@@ -7,7 +7,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 // 抽象クラスを定義
 abstract class BaseUserRepository {
-  Future<dynamic>? getCurrentUser(String idToken);
+  Future<User>? getCurrentUser(String idToken);
   Future<List<dynamic>> getUsers();
   void addUser();
 }

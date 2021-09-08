@@ -1,6 +1,7 @@
 import 'package:front/domain/models/user/user.dart';
-import 'package:front/presentation/providers/authentication.dart';
+import 'package:front/presentation/providers/authentication_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final authenticationProvider = StateNotifierProvider<Authentication, User?>((ref) => Authentication(ref.read));
-final loadingProvider = StateProvider<bool>((ref) => false);
+// いろんな画面からアクセスされそうなグローバルな変数はここに定義しておくとわかりやすそう
+final authentication = StateNotifierProvider<AuthenticationProvider, User?>((ref) => AuthenticationProvider(ref.read));
+final nowLoading = StateProvider<bool>((ref) => false);

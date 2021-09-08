@@ -117,7 +117,6 @@ components:
         logo:
           description: 店舗のロゴ
           example: aaa.png
-          format: byte
           type: string
         label:
           description: 店舗情報のUID

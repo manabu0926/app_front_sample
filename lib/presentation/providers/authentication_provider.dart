@@ -8,25 +8,22 @@ import 'package:front/general_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // @see: https://teech-lab.com/flutter-dartfirebase-authentication-anonymous/1704/?utm_source=rss&utm_medium=rss&utm_campaign=flutter-dartfirebase-authentication-anonymous
-final firebaseAuthProvider = Provider<firebase_auth.FirebaseAuth>((ref) => firebase_auth.FirebaseAuth.instance);
-
-// final userProvider = StateProvider<User?>((ref) => null);
+final firebaseAuthentication = Provider<firebase_auth.FirebaseAuth>((ref) => firebase_auth.FirebaseAuth.instance);
 
 // AuthRepositoryを提供し、ref.readを渡してアクセスできるようにする
 final authRepositoryProvider = Provider<AuthRepository>((ref) => AuthRepository(ref.read));
 
-class Authentication extends StateNotifier<User?> {
-  // User? currentUser = null;
+class AuthenticationProvider extends StateNotifier<User?> {
   final Reader _read;
 
   StreamSubscription<firebase_auth.User?>? _authStateChangesSubscription;
 
-  Authentication(this._read) : super(null) {
+  AuthenticationProvider(this._read) : super(null) {
     // 受信停止
     _authStateChangesSubscription?.cancel();
     // 受信開始
     _authStateChangesSubscription = _read(authRepositoryProvider).authStateChanges.listen((user) async {
-      final loading = _read(loadingProvider);
+      final loading = _read(nowLoading);
       try {
         loading.state = true;
         if (user != null) {
@@ -52,7 +49,7 @@ class Authentication extends StateNotifier<User?> {
 
   // サインイン
   Future<bool> signIn() async {
-    final loading = _read(loadingProvider);
+    final loading = _read(nowLoading);
     loading.state = true;
     final isAuth = await _read(authRepositoryProvider).signInWithGoogle();
 

@@ -10,7 +10,6 @@ properties:
   logo:
     type: string
     example: aaa.png
-    format: byte
     description: 店舗のロゴ
   label:
     type: string

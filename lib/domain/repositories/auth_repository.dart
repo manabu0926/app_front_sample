@@ -1,24 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:front/domain/custom_exception.dart';
-import 'package:front/presentation/providers/authentication.dart';
+import 'package:front/presentation/providers/authentication_provider.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 // 抽象クラスを定義
 abstract class BaseAuthRepository {
-  // ログイン状態の確認用（ログイン状態の変更や初期化時にイベントする）
   Stream<User?> get authStateChanges;
-
-  // サインイン（著名ユーザを作成）
   Future<void> signInWithGoogle();
-  // 現在サインインしているユーザを取得する。
   User? getCurrentUser();
-  // ログアウト
   Future<void> signOut();
 }
 
-// 認証リポジトリクラス
+// リポジトリクラス
 class AuthRepository implements BaseAuthRepository {
   // riverpod Reader
   // アプリ内の他のプロバイダーを読み取ることを許可
@@ -28,7 +23,7 @@ class AuthRepository implements BaseAuthRepository {
 
   // Readerを利用して、firebaseAuth.instanceにアクセス
   @override
-  Stream<User?> get authStateChanges => _read(firebaseAuthProvider).authStateChanges();
+  Stream<User?> get authStateChanges => _read(firebaseAuthentication).authStateChanges();
 
   // Googleでログイン
   @override
@@ -39,15 +34,13 @@ class AuthRepository implements BaseAuthRepository {
       if (googleUser == null) {
         return false;
       }
-      // Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-      // Create a new credential
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      await _read(firebaseAuthProvider).signInWithCredential(credential);
+      await _read(firebaseAuthentication).signInWithCredential(credential);
 
       return true;
     } on FirebaseAuthException catch (e, stackTrace) {
@@ -56,23 +49,21 @@ class AuthRepository implements BaseAuthRepository {
     }
   }
 
-  // 既存の匿名ユーザを返却
   @override
   User? getCurrentUser() {
     try {
-      return _read(firebaseAuthProvider).currentUser;
+      return _read(firebaseAuthentication).currentUser;
     } on FirebaseAuthException catch (e, stackTrace) {
       Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);
     }
   }
 
-  // サインアウトしたら、新たに匿名ユーザでログインさせる。
   @override
   Future<void> signOut() async {
     try {
       // サインアウト
-      await _read(firebaseAuthProvider).signOut();
+      await _read(firebaseAuthentication).signOut();
     } on FirebaseAuthException catch (e, stackTrace) {
       Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);

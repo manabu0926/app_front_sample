@@ -44,8 +44,8 @@ class MyHomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUser = useProvider(authenticationProvider);
-    final loading = useProvider(loadingProvider);
+    final currentUser = useProvider(authentication);
+    final loading = useProvider(nowLoading);
     return Stack(alignment: Alignment.center, children: [
       WillPopScope(onWillPop: () async => false, child: currentUser == null ? const LoginPage() : const TopPage()),
       FullDisplayLoading(visible: loading.state),
