@@ -15,6 +15,7 @@ firestoreのDBではなく、api通信を使用して別でサーバーを立て
 ### iphoneのシミュレーター立ち上げ方法
 
 ```
+cp .env.default .env
 flutter pub get
 open -A Simulator
 cd  ./openapi ; docker-compose up --build
