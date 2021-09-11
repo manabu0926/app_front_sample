@@ -24,6 +24,7 @@
 **/doc/api/
 **/ios/Flutter/.last_build_id
 /ios/Runner/GoogleService-Info.plist
+/ios/build/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
