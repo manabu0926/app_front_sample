@@ -9,6 +9,7 @@ class $ImagesGen {
   const $ImagesGen();
 
   AssetGenImage get icon => const AssetGenImage('images/icon.png');
+  AssetGenImage get loading => const AssetGenImage('images/loading.gif');
 }
 
 class Assets {

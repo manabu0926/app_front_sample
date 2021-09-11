@@ -5,3 +5,4 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // いろんな画面からアクセスされそうなグローバルな変数はここに定義しておくとわかりやすそう
 final authentication = StateNotifierProvider<AuthenticationProvider, User?>((ref) => AuthenticationProvider(ref.read));
 final nowLoading = StateProvider<bool>((ref) => false);
+final carouselIndex = StateProvider<int>((ref) => 0);

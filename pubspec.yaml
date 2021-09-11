@@ -36,6 +36,7 @@ dependencies:
   hooks_riverpod: ^0.14.0+4
   json_annotation: ^4.0.1
   http: ^0.13.3
+  carousel_slider: ^4.0.0
   sentry_flutter: ^6.0.0
 
 dev_dependencies:

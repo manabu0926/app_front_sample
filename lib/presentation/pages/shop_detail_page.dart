@@ -1,9 +1,8 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:front/domain/models/shop/shop.dart';
 import 'package:front/domain/repositories/shop_repository.dart';
+import 'package:front/presentation/presenters/carousels/custom_carousel.dart';
 import 'package:front/presentation/providers/shop_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -26,7 +25,7 @@ class ShopDatailPage extends HookWidget {
           // AsyncValueでdata,loading,errorのハンドリングが可能
           return shop.when(
             data: (data) => Column(
-              children: <Widget>[Text(data.label), Text(data.name)],
+              children: <Widget>[CustomCarousel(data.options)],
             ),
             loading: () => const Center(
               child: CircularProgressIndicator(),
