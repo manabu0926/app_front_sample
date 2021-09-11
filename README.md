@@ -3,9 +3,10 @@ firestoreのDBではなく、api通信を使用して別でサーバーを立て
 
 - FirebaseAuthentication
 - OpenApi(dockerで立ち上げるように管理)
-- Riverpod
-- fleezed
+- Riverpod(state管理)
+- freezed(モデルクラスのimmutableなオブジェクト用のコード生成をしてくれる)
 - flutter_lint
+- flutter_gen(assets配下リソースへのアクセス設定ファイルを生成)
 - 定数管理
 - DDDっぽいフォルダ構成
 
@@ -15,22 +16,31 @@ firestoreのDBではなく、api通信を使用して別でサーバーを立て
 ### iphoneのシミュレーター立ち上げ方法
 
 ```
-cp .env.default .env
-flutter pub get
-open -A Simulator
-cd  ./openapi ; docker-compose up --build
-flutter run
+$ cp .env.default .env
+$ flutter pub get
+$ open -A Simulator
+$ cd  ./openapi ; docker-compose up --build
+$ flutter run
 ```
 
 ### openapiのデータ更新方法
 ```
-openapi-generator generate -i openapi/openapi.yml -g openapi-yaml -o ./openapi/generated
+$ openapi-generator generate -i openapi/openapi.yml -g openapi-yaml -o ./openapi/generated
 ```
 
-### fleezedのデータ作成方法
+### freezedのデータ作成方法
 ```
-flutter packages pub run build_runner build --delete-conflicting-outputs
+$ flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
-※ fleezedについての参考
+※ freezedについての参考
 - https://note.com/mxiskw/n/n55441444bd46
 - https://techgamelife.net/2021/02/20/flutter-freezed-easy-use/
+
+### flutter_genの設定方法
+```
+$ brew install FlutterGen/tap/fluttergen
+$ fluttergen 
+
+```
+※ flutter_genの資料
+- https://wasabeef.medium.com/fluttergen-25149caea94f

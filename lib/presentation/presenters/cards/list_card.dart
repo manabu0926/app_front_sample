@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front/config/const/theme_spacer.dart';
+import 'package:front/config/gen/assets.gen.dart';
 
 class ListCard extends StatelessWidget {
   final String title;
@@ -28,7 +29,11 @@ class ListCard extends StatelessWidget {
           child: Padding(
             padding: ThemeSpacer.main,
             child: ListTile(
-              leading: const Icon(Icons.shop, size: 50),
+              leading: Assets.images.icon.image(
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
               title: Text(title),
               subtitle: Text(subtitle),
             ),
