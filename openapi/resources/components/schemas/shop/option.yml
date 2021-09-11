@@ -1,0 +1,12 @@
+required:
+  - name
+  - url
+properties:
+  name:
+    type: string
+    example: クーポン
+    description: オプション名
+  url:
+    type: string
+    example: http://test.com or wuh4fdiou3ioud9
+    description: オプションのURL or label

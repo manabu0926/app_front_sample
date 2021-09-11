@@ -43,7 +43,7 @@ class _List extends HookWidget {
           data: (data) => ListView.builder(
               itemCount: data.length,
               itemBuilder: (context, int position) =>
-                  ListCard(data[position].name, data[position].label, const NextPage())),
+                  ListCard(data[position].name, data[position].label, data[position].label)),
           loading: () => const Center(
             child: CircularProgressIndicator(),
           ),

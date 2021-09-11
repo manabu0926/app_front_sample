@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:front/config/const/theme_spacer.dart';
 import 'package:front/config/gen/assets.gen.dart';
+import 'package:front/presentation/pages/shop_detail_page.dart';
 
 class ListCard extends StatelessWidget {
   final String title;
   final String subtitle;
-  final Widget page;
+  final String label;
 
-  const ListCard(this.title, this.subtitle, this.page, {Key? key}) : super(key: key);
+  const ListCard(this.title, this.subtitle, this.label, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class ListCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => page,
+              builder: (context) => ShopDatailPage(label, title),
               fullscreenDialog: true,
             ),
           );

@@ -1,0 +1,19 @@
+get:
+  summary: labelに紐づくshopを取得する
+  operationId: getShop
+  tags:
+    - shops
+  parameters:
+    - name: label
+      in: path # パラメータをパス内に含める
+      description: ショップのラベル
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: return shop information
+      content:
+        application/json:
+          schema:
+            $ref: '../../../openapi.yml#/components/schemas/shop'

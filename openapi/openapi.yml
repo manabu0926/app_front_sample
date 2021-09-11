@@ -15,10 +15,16 @@ paths:
     $ref: './resources/path_info/users/current.yml'
   /shops:
     $ref: './resources/path_info/shops/root.yml'
+  /shops/{label}:
+    $ref: './resources/path_info/shops/show.yml'
 components:
   # ここに追加したいentityの定義及び参照ファイルのrefを記載
   schemas:
     user:
       $ref: './resources/components/schemas/user.yml'
     shop:
-      $ref: './resources/components/schemas/shop.yml'
+      $ref: './resources/components/schemas/shop/shop.yml'
+    shop_summary:
+      $ref: './resources/components/schemas/shop/summary.yml'
+    shop_option:
+      $ref: './resources/components/schemas/shop/option.yml'

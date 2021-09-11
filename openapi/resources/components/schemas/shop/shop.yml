@@ -1,0 +1,22 @@
+required:
+  - name
+  - logo
+  - label
+  # - options
+properties:
+  name:
+    type: string
+    example: 山田整骨院
+    description: 店舗名
+  logo:
+    type: string
+    example: aaa.png
+    description: 店舗のロゴ
+  label:
+    type: string
+    example: qwertyudf123yuikassdc34
+    description: 店舗情報のUID
+  # options:
+  #   type: array
+  #   items:
+  #     $ref: '../../../../openapi.yml#/components/schemas/shop_option'

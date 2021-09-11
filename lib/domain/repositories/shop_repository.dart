@@ -8,12 +8,13 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 // 抽象クラスを定義
 abstract class BaseShopRepository {
   Future<List<Shop>> getShops();
+  Future<Shop> getShop(String label);
 }
 
 // 認証リポジトリクラス
 class ShopRepository implements BaseShopRepository {
   Dio dio = Dio(ThemeSetting.baseOptions);
-  final baseShopUrl = "${dotenv.env['BASE_URL']}/shops";
+  final baseShopUrl = '${dotenv.env['BASE_URL']}/shops';
 
   @override
   Future<List<Shop>> getShops() async {
@@ -25,6 +26,22 @@ class ShopRepository implements BaseShopRepository {
       }
 
       return shops;
+    } on DioError catch (e, stackTrace) {
+      Sentry.captureException(e, stackTrace: stackTrace);
+      throw CustomException(message: e.message);
+    }
+  }
+
+  @override
+  Future<Shop> getShop(String label) async {
+    try {
+      final url = '$baseShopUrl/label';
+      print(url);
+      dynamic result = (await dio.get('$baseShopUrl/label')).data;
+      print(result);
+      Shop shop = Shop.fromJson(result);
+
+      return shop;
     } on DioError catch (e, stackTrace) {
       Sentry.captureException(e, stackTrace: stackTrace);
       throw CustomException(message: e.message);

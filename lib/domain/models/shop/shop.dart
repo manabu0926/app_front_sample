@@ -6,10 +6,6 @@ part 'shop.g.dart';
 
 @freezed
 class Shop with _$Shop {
-  const factory Shop({
-    required String name,
-    required String logo,
-    required String label,
-  }) = _Shop;
+  const factory Shop({required String name, required String logo, required String label, String? options}) = _Shop;
   factory Shop.fromJson(Map<String, dynamic> json) => _$ShopFromJson(json);
 }

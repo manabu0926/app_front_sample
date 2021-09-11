@@ -73,10 +73,30 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/shop'
+                  $ref: '#/components/schemas/shop_summary'
                 type: array
           description: return shop information
       summary: すべての店舗情報を取得する
+      tags:
+      - shops
+  /shops/{label}:
+    get:
+      operationId: getShop
+      parameters:
+      - description: ショップのラベル
+        in: path
+        name: label
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shop'
+          description: return shop information
+      summary: labelに紐づくshopを取得する
       tags:
       - shops
 components:
@@ -127,6 +147,22 @@ components:
       - logo
       - name
       type: object
+    shop_summary:
+      $ref: '#/components/schemas/summary'
+    shop_option:
+      properties:
+        name:
+          description: オプション名
+          example: クーポン
+          type: string
+        url:
+          description: オプションのURL or label
+          example: http://test.com or wuh4fdiou3ioud9
+          type: string
+      required:
+      - name
+      - url
+      type: object
     unauthorized:
       properties:
         error:
@@ -142,4 +178,37 @@ components:
           type: string
       required:
       - message
+      type: object
+    summary:
+      properties:
+        name:
+          description: 店舗名
+          example: 山田整骨院
+          type: string
+        logo:
+          description: 店舗のロゴ
+          example: aaa.png
+          type: string
+        label:
+          description: 店舗情報のUID
+          example: qwertyudf123yuikassdc34
+          type: string
+      required:
+      - label
+      - logo
+      - name
+      type: object
+    option:
+      properties:
+        name:
+          description: オプション名
+          example: クーポン
+          type: string
+        url:
+          description: オプションのURL or label
+          example: http://test.com or wuh4fdiou3ioud9
+          type: string
+      required:
+      - name
+      - url
       type: object
