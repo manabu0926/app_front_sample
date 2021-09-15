@@ -2,7 +2,8 @@ required:
   - name
   - logo
   - label
-  # - options
+  - images
+  - options
 properties:
   name:
     type: string
@@ -16,7 +17,27 @@ properties:
     type: string
     example: qwertyudf123yuikassdc34
     description: 店舗情報のUID
-  # options:
-  #   type: array
-  #   items:
-  #     $ref: '../../../../openapi.yml#/components/schemas/shop_option'
+  images:  
+    type: array
+    description: HPのトップに表示する画像
+    items:
+      type: string
+    example:
+      - image.png
+      - image2.png
+  options:
+    type: array
+    description: HPに表示するボタンオプション
+    items:
+      required:
+        - name
+        - url
+      properties:
+        name:
+          type: string
+          example: クーポン
+          description: オプション名
+        url:
+          type: string
+          example: http://test.com or wuh4fdiou3ioud9
+          description: オプションのURL or label

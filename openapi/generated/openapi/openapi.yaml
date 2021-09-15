@@ -126,7 +126,15 @@ components:
       type: object
     shop:
       example:
+        images:
+        - image.png
+        - image2.png
         name: 山田整骨院
+        options:
+        - name: クーポン
+          url: http://test.com or wuh4fdiou3ioud9
+        - name: クーポン
+          url: http://test.com or wuh4fdiou3ioud9
         logo: aaa.png
         label: qwertyudf123yuikassdc34
       properties:
@@ -142,27 +150,28 @@ components:
           description: 店舗情報のUID
           example: qwertyudf123yuikassdc34
           type: string
+        images:
+          description: HPのトップに表示する画像
+          example:
+          - image.png
+          - image2.png
+          items:
+            type: string
+          type: array
+        options:
+          description: HPに表示するボタンオプション
+          items:
+            $ref: '#/components/schemas/shop_options'
+          type: array
       required:
+      - images
       - label
       - logo
       - name
+      - options
       type: object
     shop_summary:
       $ref: '#/components/schemas/summary'
-    shop_option:
-      properties:
-        name:
-          description: オプション名
-          example: クーポン
-          type: string
-        url:
-          description: オプションのURL or label
-          example: http://test.com or wuh4fdiou3ioud9
-          type: string
-      required:
-      - name
-      - url
-      type: object
     unauthorized:
       properties:
         error:
@@ -198,7 +207,10 @@ components:
       - logo
       - name
       type: object
-    option:
+    shop_options:
+      example:
+        name: クーポン
+        url: http://test.com or wuh4fdiou3ioud9
       properties:
         name:
           description: オプション名

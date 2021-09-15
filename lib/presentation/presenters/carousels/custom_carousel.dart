@@ -1,8 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:front/config/gen/assets.gen.dart';
-import 'package:front/general_providers.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CustomCarousel extends StatefulWidget {
   const CustomCarousel(this.images, {Key? key}) : super(key: key);

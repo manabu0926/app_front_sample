@@ -24,11 +24,13 @@ class _$ShopTearOff {
       {required String name,
       required String logo,
       required String label,
-      String? options}) {
+      List<String>? images,
+      List<ShopOption>? options}) {
     return _Shop(
       name: name,
       logo: logo,
       label: label,
+      images: images,
       options: options,
     );
   }
@@ -46,7 +48,8 @@ mixin _$Shop {
   String get name => throw _privateConstructorUsedError;
   String get logo => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
-  String? get options => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
+  List<ShopOption>? get options => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +60,12 @@ mixin _$Shop {
 abstract class $ShopCopyWith<$Res> {
   factory $ShopCopyWith(Shop value, $Res Function(Shop) then) =
       _$ShopCopyWithImpl<$Res>;
-  $Res call({String name, String logo, String label, String? options});
+  $Res call(
+      {String name,
+      String logo,
+      String label,
+      List<String>? images,
+      List<ShopOption>? options});
 }
 
 /// @nodoc
@@ -73,6 +81,7 @@ class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
     Object? name = freezed,
     Object? logo = freezed,
     Object? label = freezed,
+    Object? images = freezed,
     Object? options = freezed,
   }) {
     return _then(_value.copyWith(
@@ -88,10 +97,14 @@ class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       options: options == freezed
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<ShopOption>?,
     ));
   }
 }
@@ -101,7 +114,12 @@ abstract class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
   factory _$ShopCopyWith(_Shop value, $Res Function(_Shop) then) =
       __$ShopCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String logo, String label, String? options});
+  $Res call(
+      {String name,
+      String logo,
+      String label,
+      List<String>? images,
+      List<ShopOption>? options});
 }
 
 /// @nodoc
@@ -118,6 +136,7 @@ class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
     Object? name = freezed,
     Object? logo = freezed,
     Object? label = freezed,
+    Object? images = freezed,
     Object? options = freezed,
   }) {
     return _then(_Shop(
@@ -133,10 +152,14 @@ class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       options: options == freezed
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<ShopOption>?,
     ));
   }
 }
@@ -148,6 +171,7 @@ class _$_Shop with DiagnosticableTreeMixin implements _Shop {
       {required this.name,
       required this.logo,
       required this.label,
+      this.images,
       this.options});
 
   factory _$_Shop.fromJson(Map<String, dynamic> json) =>
@@ -160,11 +184,13 @@ class _$_Shop with DiagnosticableTreeMixin implements _Shop {
   @override
   final String label;
   @override
-  final String? options;
+  final List<String>? images;
+  @override
+  final List<ShopOption>? options;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Shop(name: $name, logo: $logo, label: $label, options: $options)';
+    return 'Shop(name: $name, logo: $logo, label: $label, images: $images, options: $options)';
   }
 
   @override
@@ -175,6 +201,7 @@ class _$_Shop with DiagnosticableTreeMixin implements _Shop {
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('logo', logo))
       ..add(DiagnosticsProperty('label', label))
+      ..add(DiagnosticsProperty('images', images))
       ..add(DiagnosticsProperty('options', options));
   }
 
@@ -188,6 +215,8 @@ class _$_Shop with DiagnosticableTreeMixin implements _Shop {
                 const DeepCollectionEquality().equals(other.logo, logo)) &&
             (identical(other.label, label) ||
                 const DeepCollectionEquality().equals(other.label, label)) &&
+            (identical(other.images, images) ||
+                const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.options, options) ||
                 const DeepCollectionEquality().equals(other.options, options)));
   }
@@ -198,6 +227,7 @@ class _$_Shop with DiagnosticableTreeMixin implements _Shop {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(logo) ^
       const DeepCollectionEquality().hash(label) ^
+      const DeepCollectionEquality().hash(images) ^
       const DeepCollectionEquality().hash(options);
 
   @JsonKey(ignore: true)
@@ -216,7 +246,8 @@ abstract class _Shop implements Shop {
       {required String name,
       required String logo,
       required String label,
-      String? options}) = _$_Shop;
+      List<String>? images,
+      List<ShopOption>? options}) = _$_Shop;
 
   factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
@@ -227,7 +258,9 @@ abstract class _Shop implements Shop {
   @override
   String get label => throw _privateConstructorUsedError;
   @override
-  String? get options => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
+  @override
+  List<ShopOption>? get options => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ShopCopyWith<_Shop> get copyWith => throw _privateConstructorUsedError;

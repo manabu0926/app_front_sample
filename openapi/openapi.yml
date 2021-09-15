@@ -26,5 +26,3 @@ components:
       $ref: './resources/components/schemas/shop/shop.yml'
     shop_summary:
       $ref: './resources/components/schemas/shop/summary.yml'
-    shop_option:
-      $ref: './resources/components/schemas/shop/option.yml'
