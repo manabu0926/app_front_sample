@@ -6,6 +6,7 @@ import 'package:front/config/gen/assets.gen.dart';
 import 'package:front/domain/models/shop/shop.dart';
 import 'package:front/domain/models/shop/shop_option.dart';
 import 'package:front/domain/repositories/shop_repository.dart';
+import 'package:front/presentation/presenters/buttons/circle_button.dart';
 import 'package:front/presentation/presenters/carousels/custom_carousel.dart';
 import 'package:front/presentation/providers/shop_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -49,30 +50,21 @@ class ShopDatailPage extends HookWidget {
   }
 
   Widget shopButtonList(List<ShopOption>? options) {
-    return Column(children: <Widget>[
-      ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.all(20.0),
-          primary: Colors.white,
-          onPrimary: Colors.black,
-          shape: const CircleBorder(),
-        ),
-        onPressed: () => {},
-        child: Column(
-          children: [
-            ClipOval(
-              child: Icon(
-                Icons.favorite,
-                size: 50.0,
-              ),
-            ),
-            Text(
-              'お知らせ',
-              style: ThemeFont.circleButtonText,
-            )
-          ],
-        ),
-      )
-    ]);
+    List<Widget> buttonList = [
+      CircleButton('お知らせ', const Icon(Icons.notifications_active, size: 50.0), () => {}),
+      CircleButton('店舗HP', const Icon(Icons.domain, size: 50.0), () => {}),
+      CircleButton('お知らせ', const Icon(Icons.favorite, size: 50.0), () => {})
+    ];
+    if (options != null) {
+      for (ShopOption option in options) {
+        buttonList.add(CircleButton('お知らせ', const Icon(Icons.favorite, size: 50.0), () => {}));
+      }
+    }
+
+    return Wrap(
+        alignment: WrapAlignment.start,
+        spacing: 16.0, // gap between adjacent chips
+        runSpacing: 16.0,
+        children: buttonList);
   }
 }
