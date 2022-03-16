@@ -10,19 +10,8 @@ servers:
 paths:
   # ここに追加したいURL及び参照ファイルのrefを記載
   /users:
-    $ref: './resources/path_info/users/root.yml'
-  /users/current:
-    $ref: './resources/path_info/users/current.yml'
+    $ref: "./resources/path/users.yml"
   /shops:
-    $ref: './resources/path_info/shops/root.yml'
+    $ref: "./resources/path/shops.yml"
   /shops/{label}:
-    $ref: './resources/path_info/shops/show.yml'
-components:
-  # ここに追加したいentityの定義及び参照ファイルのrefを記載
-  schemas:
-    user:
-      $ref: './resources/components/schemas/user.yml'
-    shop:
-      $ref: './resources/components/schemas/shop/shop.yml'
-    shop_summary:
-      $ref: './resources/components/schemas/shop/summary.yml'
+    $ref: "./resources/path/shops.yml"

@@ -1,0 +1,19 @@
+get:
+  summary: すべての店舗情報を取得する
+  operationId: getShops
+  tags:
+    - shops
+  responses:
+    "200":
+      description: return shop information
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/shops"
+components:
+  # ここに追加したいentityの定義及び参照ファイルのrefを記載
+  schemas:
+    shops:
+      type: array
+      items:
+        $ref: "../components/schemas/shop.yml#/shop"

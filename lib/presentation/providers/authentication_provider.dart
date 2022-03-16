@@ -23,7 +23,7 @@ class AuthenticationProvider extends StateNotifier<User?> {
     _authStateChangesSubscription?.cancel();
     // 受信開始
     _authStateChangesSubscription = _read(authRepositoryProvider).authStateChanges.listen((user) async {
-      final loading = _read(nowLoading);
+      final loading = _read(nowLoading.state);
       try {
         loading.state = true;
         if (user != null) {
@@ -49,7 +49,7 @@ class AuthenticationProvider extends StateNotifier<User?> {
 
   // サインイン
   Future<bool> signIn() async {
-    final loading = _read(nowLoading);
+    final loading = _read(nowLoading.state);
     loading.state = true;
     final isAuth = await _read(authRepositoryProvider).signInWithGoogle();
 

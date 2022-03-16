@@ -11,9 +11,9 @@ get:
       schema:
         type: string
   responses:
-    '200':
+    "200":
       description: return shop information
       content:
         application/json:
           schema:
-            $ref: '../../../openapi.yml#/components/schemas/shop'
+            $ref: "../components/schemas/user.yml#/user"

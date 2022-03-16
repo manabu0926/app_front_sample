@@ -14,6 +14,9 @@ class ShopProvider extends StateNotifier<AsyncValue<Shop>> {
 
   Future<void> _getShop() async {
     try {
+      // final Openapi _openApi = OpenApiFactory().build();
+      // final repository = _openApi.getShopsApi();
+      // final response = (await repository.getShops()).data;
       Shop shop = await repository.getShop(label);
       state = AsyncValue.data(shop);
     } on Exception catch (e) {

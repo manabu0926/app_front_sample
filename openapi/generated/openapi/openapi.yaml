@@ -39,31 +39,6 @@ paths:
       summary: 新しいユーザーを追加する
       tags:
       - users
-  /users/current:
-    get:
-      operationId: getCurrentUser
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/user'
-          description: return user information
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unauthorized'
-          description: Unauthorized
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/internal_server_error'
-          description: Internal Server Error
-      summary: 認証したユーザーを取得する
-      tags:
-      - users
   /shops:
     get:
       operationId: getShops
@@ -72,31 +47,22 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/shop_summary'
-                type: array
+                $ref: '#/components/schemas/shops'
           description: return shop information
       summary: すべての店舗情報を取得する
       tags:
       - shops
   /shops/{label}:
     get:
-      operationId: getShop
-      parameters:
-      - description: ショップのラベル
-        in: path
-        name: label
-        required: true
-        schema:
-          type: string
+      operationId: getShops
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/shop'
+                $ref: '#/components/schemas/shops'
           description: return shop information
-      summary: labelに紐づくshopを取得する
+      summary: すべての店舗情報を取得する
       tags:
       - shops
 components:
@@ -124,6 +90,10 @@ components:
       - label
       - name
       type: object
+    shops:
+      items:
+        $ref: '#/components/schemas/shop'
+      type: array
     shop:
       example:
         images:
@@ -131,10 +101,8 @@ components:
         - image2.png
         name: 山田整骨院
         options:
-        - name: クーポン
-          url: http://test.com or wuh4fdiou3ioud9
-        - name: クーポン
-          url: http://test.com or wuh4fdiou3ioud9
+        - '{}'
+        - '{}'
         logo: aaa.png
         label: qwertyudf123yuikassdc34
       properties:
@@ -161,7 +129,18 @@ components:
         options:
           description: HPに表示するボタンオプション
           items:
-            $ref: '#/components/schemas/shop_options'
+            properties:
+              name:
+                description: オプション名
+                example: クーポン
+                type: string
+              url:
+                description: オプションのURL or label
+                example: http://test.com or wuh4fdiou3ioud9
+                type: string
+            required:
+            - name
+            - url
           type: array
       required:
       - images
@@ -169,58 +148,4 @@ components:
       - logo
       - name
       - options
-      type: object
-    shop_summary:
-      $ref: '#/components/schemas/summary'
-    unauthorized:
-      properties:
-        error:
-          example: アカウント登録もしくはログインしてください。
-          type: string
-      required:
-      - error
-      type: object
-    internal_server_error:
-      properties:
-        message:
-          example: Internal Server Error
-          type: string
-      required:
-      - message
-      type: object
-    summary:
-      properties:
-        name:
-          description: 店舗名
-          example: 山田整骨院
-          type: string
-        logo:
-          description: 店舗のロゴ
-          example: aaa.png
-          type: string
-        label:
-          description: 店舗情報のUID
-          example: qwertyudf123yuikassdc34
-          type: string
-      required:
-      - label
-      - logo
-      - name
-      type: object
-    shop_options:
-      example:
-        name: クーポン
-        url: http://test.com or wuh4fdiou3ioud9
-      properties:
-        name:
-          description: オプション名
-          example: クーポン
-          type: string
-        url:
-          description: オプションのURL or label
-          example: http://test.com or wuh4fdiou3ioud9
-          type: string
-      required:
-      - name
-      - url
       type: object

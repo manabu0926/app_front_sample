@@ -5,6 +5,7 @@ services:
     container_name: app-frontend-sample-swagger-ui
     volumes:
       - ./openapi.yml:/usr/share/nginx/html/openapi.yml
+      - ./resources:/usr/share/nginx/html/resources
     environment:
       API_URL: openapi.yml
     ports:

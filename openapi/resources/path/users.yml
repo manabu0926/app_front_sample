@@ -4,14 +4,14 @@ get:
   tags:
     - users
   responses:
-    '200':
+    "200":
       description: return user information
       content:
         application/json:
           schema:
             type: array
             items:
-              $ref: '../../../openapi.yml#/components/schemas/user'
+              $ref: "../components/schemas/user.yml#/user"
 post:
   summary: 新しいユーザーを追加する
   operationId: addUser
@@ -22,11 +22,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../../../openapi.yml#/components/schemas/user'
+          $ref: "../components/schemas/user.yml#/user"
         example:
           name: 佐藤 二郎
           email: new@test.com
           example: qwertyudf123yuikassdc23
   responses:
-    '201':
+    "201":
       description: CREATED

@@ -3,7 +3,7 @@ description: Flutter/FirebaseAuth/openapi sample
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -23,39 +23,38 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  built_value: '>=8.1.0 <9.0.0'
-  built_collection: '>=5.1.0 <6.0.0'
+  built_value: ">=8.1.0 <9.0.0"
+  built_collection: ">=5.1.0 <6.0.0"
   cupertino_icons: ^1.0.3
   dio: ^4.0.0
   firebase_auth: ^3.1.0
   firebase_core: ^1.6.0
   freezed_annotation: ^0.14.2
   flutter_dotenv: ^5.0.2
-  flutter_hooks: ^0.17.0
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^1.0.0
   google_sign_in: ^5.1.0
-  hooks_riverpod: ^0.14.0+4
   json_annotation: ^4.0.1
   http: ^0.13.3
   carousel_slider: ^4.0.0
-  sentry_flutter: ^6.0.0
-
+  sentry_flutter: ^6.3.0
+  openapi:
+    path: ./openapi/client
 dev_dependencies:
-  built_value_generator: '>=8.1.0 <9.0.0'
+  built_value_generator: ">=8.1.0 <9.0.0"
   build_runner: ^2.0.6
   freezed: ^0.14.2
   json_serializable: ^4.1.4
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
-  test: '>=1.16.0 <1.17.12'
 
 flutter_gen:
   output: lib/config/gen/ # Optional (default: lib/gen/)
-  lineLength: 80   # Optional (default: 80)
+  lineLength: 80 # Optional (default: 80)
 
 flutter:
   uses-material-design: true
-
 
   assets:
     - .env

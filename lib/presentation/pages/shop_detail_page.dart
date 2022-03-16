@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:front/config/const/theme_font.dart';
-import 'package:front/config/const/theme_spacer.dart';
-import 'package:front/config/gen/assets.gen.dart';
 import 'package:front/domain/models/shop/shop.dart';
 import 'package:front/domain/models/shop/shop_option.dart';
 import 'package:front/domain/repositories/shop_repository.dart';
@@ -30,8 +27,8 @@ class ShopDatailPage extends HookWidget {
         title: Text(name),
       ),
       body: Consumer(
-        builder: (context, watch, child) {
-          final AsyncValue<Shop> shop = watch(selectedShop);
+        builder: (context, ref, child) {
+          final AsyncValue<Shop> shop = ref.watch(selectedShop);
           // AsyncValueでdata,loading,errorのハンドリングが可能
           return shop.when(
             data: (data) => Column(

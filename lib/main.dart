@@ -39,13 +39,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends HookWidget {
+class MyHomePage extends HookConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final currentUser = useProvider(authentication);
-    final loading = useProvider(nowLoading);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(authentication.notifier);
+    final loading = ref.watch(nowLoading.state);
     return Stack(alignment: Alignment.center, children: [
       WillPopScope(onWillPop: () async => false, child: currentUser == null ? const LoginPage() : const TopPage()),
       FullDisplayLoading(visible: loading.state),

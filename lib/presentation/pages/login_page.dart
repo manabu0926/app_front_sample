@@ -7,10 +7,10 @@ import 'package:front/presentation/presenters/buttons/expanded_button.dart';
 import 'package:front/presentation/presenters/dynamics/custom_snackbar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(ThemeWord.login),
@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ExpandedButton(ThemeWord.loginGoogle, ThemeColor.main, () async {
-                final isAuth = await context.read(authentication.notifier).signIn();
+                final isAuth = await ref.read(authentication.notifier).signIn();
                 if (isAuth) {
                   CustomSnackbar().showSnackBar(ThemeWord.signin, context);
                 }
