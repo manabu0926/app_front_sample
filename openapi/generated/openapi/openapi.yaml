@@ -18,6 +18,30 @@ paths:
                   $ref: '#/components/schemas/user'
                 type: array
           description: return user information
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unauthorized'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forbidden'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/not_found'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+          description: Internal Server Error
       summary: すべてのユーザーを取得する
       tags:
       - users
@@ -89,6 +113,38 @@ components:
       - email
       - label
       - name
+      type: object
+    unauthorized:
+      properties:
+        error:
+          example: アカウント登録もしくはログインしてください。
+          type: string
+      required:
+      - error
+      type: object
+    forbidden:
+      properties:
+        message:
+          example: Forbidden
+          type: string
+      required:
+      - message
+      type: object
+    not_found:
+      properties:
+        message:
+          example: Not Found
+          type: string
+      required:
+      - message
+      type: object
+    internal_server_error:
+      properties:
+        message:
+          example: Internal Server Error
+          type: string
+      required:
+      - message
       type: object
     shops:
       items:
